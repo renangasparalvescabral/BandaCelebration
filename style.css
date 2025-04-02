@@ -1,105 +1,397 @@
 html,body{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 
-/*........................................................*/
-#navbar {
-  background-color: #333; /* Black background color */
-  position: fixed; /* Make it stick/fixed */
-  top: -70px; /* Hide the navbar 50 px outside of the top view */
-  width: 100%; /* Full width */
-  padding-top: 30px;
-  transition: top 0.5s; /* Transition effect when sliding down (and up) */
+*{
+  box-sizing: border-box;
+}
+
+span{
+  visibility: hidden;
+}
+
+/*---------------------------Header------------------*/
+
+
+#navbar{
+  background-color: rgb(226, 139, 31);
+  opacity: 0.7;
+  position: fixed;
+  width: 100%;
+  transition: top 0.3s; 
   z-index: 99;
+  top: -50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
-/* Style the navbar links */
-#navbar a {
-  float: right;
-  display: block;
-  color: white;
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
   text-align: center;
-  padding: 15px;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
   text-decoration: none;
-  margin-right: 30px;
-  
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-#navbar a:hover {
-  background-color: #ddd;
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+
+a{
+  padding: 50px;
   color: black;
+  text-decoration: none;
 }
-
 
 .img-cabecalho{
-  
-  width: 120px;
-  margin-top: -10px;
-  margin-left: 30px;
+  width: 150px;
+  padding: 15px;
 }
 
-/*...........................................................*/
-
+/*........................Foto Into....................*/
 
 .img-tour{
   padding: 0;
 }
 
-.Cont-1{
-    overflow: hidden;
-    cursor: pointer;
-    
+/*........................Galeria de Membros.................*/
+
+.membros{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 60vh;
+  
 }
 
-.Cont-1  .img-fluid{
-    height: 100%;
+.gallery-bale{
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: flex; 
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 47px;
+  
+}
+
+.gallery-bale img {
+  z-index: 1;
+  position: absolute;
+  inset: 5px;
+  border-radius: 40px;
+  background-size: cover;
+  background-image: url(./imagem/bale.jpeg);
+  z-index: 1;
+}
+
+.gallery-bale::before{
+  content: '';
+  position: absolute;
+  width: 100px;
+  background-image: linear-gradient(180deg,rgb(0,183,255),rgb(255,48,255));
+  height: 130%;
+  animation: rotBGimg 3s linear infinite;
+  transition: all 0.2s linear;
+}
+
+@keyframes rotate{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.gallery-bale::after{
+  content: "";
+  animation: rotate 4s linear infinite;
+  animation-delay: -2s;
+}
+
+/*...................cantores......................*/
+
+.gallery-cantores{
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: flex; 
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 47px; 
+  
+}
+
+
+.gallery-cantores img {
+  z-index: 1;
+  position: absolute;
+  inset: 5px;
+  border-radius: 40px;
+  background-size: cover;
+  background-image: url(./imagem/cantores.jpeg);
+  z-index: 1;
+}
+
+.gallery-cantores::before{
+  content: '';
+  position: absolute;
+  width: 100px;
+  background-image: linear-gradient(180deg,rgb(0,183,255),rgb(255,48,255));
+  height: 130%;
+  animation: rotBGimg 3s linear infinite;
+  transition: all 0.2s linear;
+}
+
+@keyframes rotBGimg{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.gallery-cantores::after{
+  content: "";
+  background-image: conic-gradient(transparent,transparent, transparent,#ff7300);
+  animation: rotate 4s linear infinite;
+  animation-delay: -2s;
+}
+
+/*............Musicos...........................*/
+
+.gallery-musicos{
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: flex; 
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 47px; 
+  
+}
+
+
+.gallery-musicos img {
+  z-index: 1;
+  position: absolute;
+  inset: 5px;
+  border-radius: 40px;
+  background-size: cover;
+  background-image: url(./imagem/banda.jpeg);
+  z-index: 1;
+}
+
+.gallery-musicos::before{
+  content: '';
+  position: absolute;
+  width: 100px;
+  background-image: linear-gradient(180deg,rgb(0,183,255),rgb(255,48,255));
+  height: 130%;
+  animation: rotBGimg 3s linear infinite;
+  transition: all 0.2s linear;
+}
+
+@keyframes rotBGimg{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.gallery-musicos::after{
+  content: "";
+  background-image: conic-gradient(transparent,transparent, transparent,#ff7300);
+  animation: rotate 4s linear infinite;
+  animation-delay: -2s;
+}
+
+
+
+.desc{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/*................  Slideshow ...........................*/
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+  border-style:double;
+  transition: 0.3s ease-in-out;
+  
+}
+
+/*...........................................................*/
+
+@media (max-width: 450px){
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+
+ .linksEsq {
+    display: none;
+  }
+
+  .linksDir{
+    display: none;
+  }
+
+  span{
+    visibility: visible;
+    margin-left: 20vw;
+  }
+
+  .responsive {
+    display: block;
     width: 100%;
-    transition: 2.0s ease;
-    object-fit: cover;
-    
+  }
+
+
 }
 
-.Cont-1:hover .img-fluid {
-    transform: scale(1.1)
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
 }
 
-.Cont-2{
-    overflow: hidden;
-    cursor: pointer;
-    
-}
 
-.Cont-2  .img-fluid{
-    height: 100%;
-    width: 100%;
-    transition: 1.8s ease;
-    object-fit: cover;
-}
 
-.Cont-2:hover .img-fluid {
-    transform: scale(1.1)
-}
-
-.Cont-3{
-    overflow: hidden;
-    cursor: pointer;
-    
-}
-
-.Cont-3  .img-fluid{
-    height: 100%;
-    width: 100%;
-    transition: 1.8s ease;
-    object-fit: cover;
-}
-
-.Cont-3:hover .img-fluid {
-    transform: scale(1.1)
-}
-
-/*..................................................*/
 
 
 
