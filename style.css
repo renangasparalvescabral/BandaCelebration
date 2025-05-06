@@ -85,28 +85,62 @@ a{
 
 .img-tour{
   padding: 0;
+  position: relative;
 }
 
 /*........................Galeria de Membros.................*/
 
 .membros{
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  align-content: center;
+}
+
+.apresentacao {
+  z-index: 1;
+  position: relative;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 60vh;
+  justify-content: center;
+  font-size: 30px;
+  padding: 10px;
+  color: aqua;
+}
+
+.membros .apresentacao{
+  top: -80px;
+}
   
+
+h2{
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  padding: 10px;
+  color: #dbbd13;
+  top: -60px;
+  background-color: #2e1e1e;
+  margin-left: 500px;
+  margin-right: 500px;
+}
+
+.video-estrela{
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+}
+
+.banda{
+  display: flex;
+  justify-content: space-around;
+
 }
 
 .gallery-bale{
   position: relative;
-  width: 350px;
-  height: 350px;
-  display: flex; 
-  place-content: center;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 47px;
-  
 }
 
 .gallery-bale img {
@@ -114,48 +148,17 @@ a{
   position: absolute;
   inset: 5px;
   border-radius: 40px;
-  background-size: cover;
-  background-image: url(./imagem/bale.jpeg);
-  z-index: 1;
+  height: 300px;
+  width: 333px;
 }
 
-.gallery-bale::before{
-  content: '';
-  position: absolute;
-  width: 100px;
-  background-image: linear-gradient(180deg,rgb(0,183,255),rgb(255,48,255));
-  height: 130%;
-  animation: rotBGimg 3s linear infinite;
-  transition: all 0.2s linear;
-}
 
-@keyframes rotate{
-  0%{
-    transform: rotate(0deg);
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-}
-
-.gallery-bale::after{
-  content: "";
-  animation: rotate 4s linear infinite;
-  animation-delay: -2s;
-}
 
 /*...................cantores......................*/
 
 .gallery-cantores{
   position: relative;
-  width: 350px;
-  height: 350px;
-  display: flex; 
-  place-content: center;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 47px; 
-  
+ 
 }
 
 
@@ -164,36 +167,11 @@ a{
   position: absolute;
   inset: 5px;
   border-radius: 40px;
-  background-size: cover;
-  background-image: url(./imagem/cantores.jpeg);
-  z-index: 1;
+  height: 300px;
+  width: 333px;
 }
 
-.gallery-cantores::before{
-  content: '';
-  position: absolute;
-  width: 100px;
-  background-image: linear-gradient(180deg,rgb(0,183,255),rgb(255,48,255));
-  height: 130%;
-  animation: rotBGimg 3s linear infinite;
-  transition: all 0.2s linear;
-}
 
-@keyframes rotBGimg{
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  }
-}
-
-.gallery-cantores::after{
-  content: "";
-  background-image: conic-gradient(transparent,transparent, transparent,#ff7300);
-  animation: rotate 4s linear infinite;
-  animation-delay: -2s;
-}
 
 /*............Musicos...........................*/
 
@@ -201,10 +179,8 @@ a{
   position: relative;
   width: 350px;
   height: 350px;
-  display: flex; 
-  place-content: center;
-  place-items: center;
-  overflow: hidden;
+   
+ 
   border-radius: 47px; 
   
 }
@@ -215,38 +191,9 @@ a{
   position: absolute;
   inset: 5px;
   border-radius: 40px;
-  background-size: cover;
-  background-image: url(./imagem/banda.jpeg);
-  z-index: 1;
+  height: 300px;
+  width: 333px;
 }
-
-.gallery-musicos::before{
-  content: '';
-  position: absolute;
-  width: 100px;
-  background-image: linear-gradient(180deg,rgb(0,183,255),rgb(255,48,255));
-  height: 130%;
-  animation: rotBGimg 3s linear infinite;
-  transition: all 0.2s linear;
-}
-
-@keyframes rotBGimg{
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  }
-}
-
-.gallery-musicos::after{
-  content: "";
-  background-image: conic-gradient(transparent,transparent, transparent,#ff7300);
-  animation: rotate 4s linear infinite;
-  animation-delay: -2s;
-}
-
-
 
 .desc{
   width: 90%;
