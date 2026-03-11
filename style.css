@@ -1,27 +1,42 @@
-html,body{
-    padding: 0;
-    margin: 0;
+:root {
+  --cor-primaria: rgb(226, 139, 31);
+  --cor-primaria-85: rgba(226, 139, 31, 0.85);
+  --cor-escuro: #1a1a1a;
+  --cor-dourado: #dbbd13;
 }
 
-*{
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+* {
   box-sizing: border-box;
 }
 
-span{
+.hamburger {
   visibility: hidden;
+  font-size: 30px;
+  cursor: pointer;
 }
 
 /*---------------------------Header------------------*/
 
 
-#navbar{
-  background-color: rgb(226, 139, 31);
-  opacity: 0.7;
+#navbar {
+  background-color: var(--cor-primaria-85);
   position: fixed;
   width: 100%;
-  transition: top 0.3s; 
+  transition: top 0.3s;
   z-index: 99;
-  top: -50px;
+  top: -90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,11 +47,10 @@ span{
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   overflow-x: hidden;
   transition: 0.5s;
 }
@@ -58,7 +72,8 @@ span{
   transition: 0.3s;
 }
 
-.overlay a:hover, .overlay a:focus {
+.overlay a:hover,
+.overlay a:focus {
   color: #f1f1f1;
 }
 
@@ -70,138 +85,226 @@ span{
 }
 
 
-a{
-  padding: 50px;
+.linksEsq a,
+.linksDir a {
+  padding: 15px 20px;
   color: black;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.linksEsq a:hover,
+.linksDir a:hover {
+  color: #fff;
+}
+
+.linksEsq a.active-link,
+.linksDir a.active-link {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.link-logo {
+  padding: 0;
   text-decoration: none;
 }
 
-.img-cabecalho{
+.img-cabecalho {
   width: 150px;
   padding: 15px;
 }
 
 /*........................Foto Into....................*/
 
-.img-tour{
+.img-tour {
+  width: 100%;
   padding: 0;
   position: relative;
 }
 
+/*........................Agenda de Shows....................*/
+
+#agenda {
+  background-color: var(--cor-escuro);
+  padding: 50px 20px;
+}
+
+.titulo-agenda {
+  text-align: center;
+  font-size: 28px;
+  padding: 15px 10px;
+  color: var(--cor-dourado);
+  background-color: #2e1e1e;
+  max-width: 400px;
+  margin: 0 auto 30px;
+}
+
+.agenda-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.show-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--cor-primaria);
+  padding: 18px 20px;
+  border-radius: 0 8px 8px 0;
+  transition: background-color 0.3s;
+}
+
+.show-card:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.show-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.show-dia {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  line-height: 1;
+}
+
+.show-mes {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  text-transform: uppercase;
+}
+
+.show-info {
+  flex: 1;
+}
+
+.show-local {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 4px;
+}
+
+.show-cidade {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+}
+
+.show-btn {
+  border: 2px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  background: transparent;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.show-btn:hover {
+  background-color: var(--cor-primaria);
+  color: #fff;
+}
+
 /*........................Galeria de Membros.................*/
 
-.membros{
-  height: 80vh;
+#banda {
   position: relative;
   overflow: hidden;
-  align-content: center;
+  height: 80vh;
 }
 
-.apresentacao {
-  z-index: 1;
+#text-banda {
   position: relative;
-  display: flex;
-  justify-content: center;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+  top: 35px;
+}
+
+#text-banda h2 {
+  font-size: 22px;
+  line-height: 1.4;
+}  
+
+.titulo-membros {
+  text-align: center;
   font-size: 30px;
-  padding: 10px;
-  color: aqua;
+  padding: 15px 10px;
+  color: var(--cor-dourado);
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.membros .apresentacao{
-  top: -80px;
-}
-  
-
-h2{
-  z-index: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  padding: 10px;
-  color: #dbbd13;
-  top: -60px;
-  background-color: #2e1e1e;
-  margin-left: 500px;
-  margin-right: 500px;
-}
-
-.video-estrela{
+.video-estrela {
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
 }
 
-.banda{
+#membros .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.banda {
+  position: relative;
+  z-index: 1;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70%;
 
 }
 
-.gallery-bale{
+.gallery-bale,
+.gallery-cantores,
+.gallery-musicos {
   position: relative;
 }
 
-.gallery-bale img {
-  z-index: 1;
-  position: absolute;
-  inset: 5px;
-  border-radius: 40px;
-  height: 300px;
-  width: 333px;
-}
-
-
-
-/*...................cantores......................*/
-
-.gallery-cantores{
-  position: relative;
- 
-}
-
-
-.gallery-cantores img {
-  z-index: 1;
-  position: absolute;
-  inset: 5px;
-  border-radius: 40px;
-  height: 300px;
-  width: 333px;
-}
-
-
-
-/*............Musicos...........................*/
-
-.gallery-musicos{
-  position: relative;
-  width: 350px;
-  height: 350px;
-   
- 
-  border-radius: 47px; 
-  
-}
-
-
+.gallery-bale img,
+.gallery-cantores img,
 .gallery-musicos img {
   z-index: 1;
-  position: absolute;
-  inset: 5px;
   border-radius: 40px;
-  height: 300px;
-  width: 333px;
+  width: 100%;
+  max-width: 370px;
+  height: auto;
+  transition: transform 0.3s;
 }
 
-.desc{
-  width: 90%;
-  display: flex;
-  justify-content: center;
-
+.gallery-bale img:hover,
+.gallery-cantores img:hover,
+.gallery-musicos img:hover {
+  transform: scale(1.05);
 }
 
+.gallery-label {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
 
 .clearfix:after {
   content: "";
@@ -210,124 +313,235 @@ h2{
 }
 
 
-/*................  Slideshow ...........................*/
+/*................  Carrossel Twitch ...........................*/
 
-/* Position the image container (needed to position the left and right arrows) */
-.container {
+#carrossel-membros{
+  background-color: var(--cor-escuro);
+  padding: 30px 0 40px;
+}
+
+.carrossel-twitch{
   position: relative;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Hide the images by default */
-.mySlides {
-  display: none;
+.carrossel-track{
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease;
+  will-change: transform;
 }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
+.carrossel-slide{
+  flex: 0 0 60%;
+  max-width: 60%;
+  padding: 0 10px;
+  transform: scale(1);
+  opacity: 0.4;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  pointer-events: none;
 }
 
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-
-}
-
-.active,
-.demo:hover {
+.carrossel-slide.ativo{
+  transform: scale(1.08);
   opacity: 1;
-  border-style:double;
-  transition: 0.3s ease-in-out;
-  
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.carrossel-slide video{
+  width: 100%;
+  border-radius: 12px;
+  background: #000;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.carrossel-nome{
+  text-align: center;
+  padding: 10px 0 4px;
+  color: var(--cor-primaria);
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carrossel-slide.ativo .carrossel-nome{
+  opacity: 1;
+}
+
+/* Botões prev/next */
+.carrossel-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  padding: 14px 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  line-height: 1;
+}
+
+.carrossel-btn:hover{
+  background: rgba(226, 139, 31, 0.85);
+}
+
+.carrossel-prev{
+  left: 30px;
+}
+
+.carrossel-next{
+  right: 30px;
+}
+
+/* Dots */
+.carrossel-dots{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 0 0;
+}
+
+.carrossel-dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--cor-primaria);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s;
+}
+
+.carrossel-dot.ativo{
+  background: var(--cor-primaria);
+}
+
+/*................  Botão Topo ...........................*/
+
+.btn-topo {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 98;
+  border: none;
+  background-color: var(--cor-primaria-85);
+  color: #fff;
+  font-size: 20px;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-topo:hover {
+  background-color: var(--cor-primaria);
+}
+
+/*................  Footer ...........................*/
+
+.site-footer {
+  background-color: var(--cor-escuro);
+  color: #ccc;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.footer-logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.footer-texto {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.footer-redes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.footer-redes a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-redes a:hover {
+  color: #fff;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: #777;
+}
+
+/*................  Animações ...........................*/
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /*...........................................................*/
 
-@media (max-width: 450px){
-  .overlay a {font-size: 20px}
+@media (max-width: 768px) {
+  .overlay a {
+    font-size: 20px
+  }
+
   .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
   }
 
- .linksEsq {
+  .linksEsq {
     display: none;
   }
 
-  .linksDir{
+  .linksDir {
     display: none;
   }
 
-  span{
+  .hamburger {
     visibility: visible;
     margin-left: 20vw;
+  }
+
+  .show-card {
+    flex-wrap: wrap;
+  }
+
+  .show-btn {
+    width: 100%;
+    text-align: center;
   }
 
   .responsive {
     display: block;
     width: 100%;
   }
-
-
 }
 
 @media only screen and (max-width: 700px) {
@@ -337,17 +551,69 @@ h2{
   }
 }
 
+@media (max-width: 768px){
+  .carrossel-slide{
+    flex: 0 0 80%;
+    max-width: 80%;
+  }
 
+  .carrossel-btn{
+    font-size: 22px;
+    padding: 10px 13px;
+  }
 
+  .carrossel-prev{
+    left: 10px;
+  }
 
+  .carrossel-next{
+    right: 10px;
+  }
+}
 
+@media (max-width: 480px){
+  .carrossel-slide{
+    flex: 0 0 90%;
+    max-width: 90%;
+  }
 
+  .carrossel-btn{
+    font-size: 18px;
+    padding: 8px 11px;
+  }
 
+  .carrossel-prev{
+    left: 5px;
+  }
 
+  .carrossel-next{
+    right: 5px;
+  }
+}
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 
+  .gallery-bale img,
+  .gallery-cantores img,
+  .gallery-musicos img {
+    transition: none;
+  }
 
-
-
-
+  .overlay {
+    transition: none;
+  }
+  .carrossel-track,
+  .carrossel-slide,
+  .carrossel-nome{
+    transition: none;
+  }
+}
