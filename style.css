@@ -223,7 +223,8 @@ body {
 #banda {
   position: relative;
   overflow: hidden;
-  height: 80vh;
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 #text-banda {
@@ -231,13 +232,15 @@ body {
   color: #fff;
   text-align: center;
   z-index: 2;
-  top: 35px;
+  padding: 40px 20px 20px;
 }
 
 #text-banda h2 {
   font-size: 22px;
-  line-height: 1.4;
-}  
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 .titulo-membros {
   text-align: center;
@@ -253,13 +256,9 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  min-width: 100%;
-}
-
-#membros .row:after {
-  content: "";
-  display: table;
-  clear: both;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .banda {
@@ -267,11 +266,15 @@ body {
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
-  justify-content: space-evenly;
+  gap: 60px;
+  justify-content: center;
   align-items: center;
-  height: 70%;
+  padding: 20px 60px;
+}
 
+.responsive {
+  flex: 1 1 300px;
+  max-width: 500px;
 }
 
 .gallery-bale,
@@ -286,7 +289,6 @@ body {
   z-index: 1;
   border-radius: 40px;
   width: 100%;
-  max-width: 370px;
   height: auto;
   transition: transform 0.3s;
 }
@@ -427,6 +429,45 @@ body {
   background: var(--cor-primaria);
 }
 
+/*................  Seção Fotos ...........................*/
+
+#fotos {
+  background-color: var(--cor-escuro);
+  padding: 50px 20px;
+}
+
+.titulo-fotos {
+  text-align: center;
+  font-size: 28px;
+  padding: 15px 10px;
+  color: var(--cor-dourado);
+  max-width: 400px;
+  margin: 0 auto 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.fotos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.foto-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.foto-item img:hover {
+  transform: scale(1.03);
+  opacity: 0.85;
+}
+
 /*................  Botão Topo ...........................*/
 
 .btn-topo {
@@ -539,15 +580,12 @@ body {
   }
 
   .responsive {
-    display: block;
-    width: 100%;
+    flex: 1 1 100%;
+    max-width: 320px;
   }
-}
 
-@media only screen and (max-width: 700px) {
-  .responsive {
-    width: 49.99999%;
-    margin: 6px 0;
+  #text-banda h2 {
+    font-size: 16px;
   }
 }
 
