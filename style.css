@@ -109,6 +109,26 @@ body {
   text-decoration: none;
 }
 
+.btn-contratar {
+  position: absolute;
+  right: 24px;
+  padding: 8px 20px;
+  background-color: var(--cor-escuro);
+  color: var(--cor-primaria) !important;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-contratar:hover {
+  background-color: var(--cor-primaria);
+  color: #fff !important;
+}
+
 .img-cabecalho {
   width: 150px;
   padding: 15px;
@@ -125,7 +145,11 @@ body {
 /*........................Agenda de Shows....................*/
 
 #agenda {
-  background-color: var(--cor-escuro);
+  background-color: #090c18;
+  background-image:
+    linear-gradient(180deg, rgba(226,139,31,0.06) 0%, transparent 25%, transparent 75%, rgba(226,139,31,0.04) 100%),
+    repeating-linear-gradient(90deg, transparent 0, transparent 79px, rgba(226,139,31,0.035) 79px, rgba(226,139,31,0.035) 80px),
+    repeating-linear-gradient(0deg, transparent 0, transparent 79px, rgba(226,139,31,0.035) 79px, rgba(226,139,31,0.035) 80px);
   padding: 50px 20px;
 }
 
@@ -136,86 +160,101 @@ body {
   color: var(--cor-dourado);
   background-color: #2e1e1e;
   max-width: 400px;
-  margin: 0 auto 30px;
+  margin: 0 auto 48px;
 }
 
-.agenda-grid {
+.agenda-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.agenda-mes-grupo {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 700px;
-  margin: 0 auto;
+}
+
+.agenda-mes-titulo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cor-primaria);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+}
+
+.agenda-mes-titulo::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(226, 139, 31, 0.25);
+}
+
+.agenda-mes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
 }
 
 .show-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(226, 139, 31, 0.18);
+  border-radius: 10px;
+  padding: 22px 20px 18px;
   display: flex;
-  align-items: center;
-  gap: 20px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid var(--cor-primaria);
-  padding: 18px 20px;
-  border-radius: 0 8px 8px 0;
-  transition: background-color 0.3s;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
 }
 
 .show-card:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  border-color: var(--cor-primaria);
+  background: rgba(226, 139, 31, 0.07);
 }
 
 .show-data {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 60px;
+  align-items: baseline;
+  gap: 6px;
 }
 
 .show-dia {
-  font-size: 32px;
+  font-size: 44px;
   font-weight: 700;
   color: var(--cor-primaria);
   line-height: 1;
 }
 
 .show-mes {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--cor-primaria);
+  color: rgba(226, 139, 31, 0.6);
   text-transform: uppercase;
 }
 
 .show-info {
-  flex: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 12px;
 }
 
 .show-local {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   color: #fff;
   margin: 0 0 4px;
 }
 
 .show-cidade {
-  font-size: 14px;
-  color: #999;
+  font-size: 13px;
+  color: #888;
   margin: 0;
-}
-
-.show-btn {
-  border: 2px solid var(--cor-primaria);
-  color: var(--cor-primaria);
-  background: transparent;
-  padding: 8px 20px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.show-btn:hover {
-  background-color: var(--cor-primaria);
-  color: #fff;
 }
 
 /*........................Galeria de Membros.................*/
@@ -225,6 +264,20 @@ body {
   overflow: hidden;
   min-height: 100vh;
   padding-bottom: 50px;
+  background-color: #080808;
+  background-image:
+    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(226, 139, 31, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 10% 80%, rgba(219, 189, 19, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(219, 189, 19, 0.06) 0%, transparent 55%);
+}
+
+#banda::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.55) 100%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 #text-banda {
@@ -232,14 +285,36 @@ body {
   color: #fff;
   text-align: center;
   z-index: 2;
-  padding: 40px 20px 20px;
+  padding: 48px 20px 36px;
 }
 
 #text-banda h2 {
   font-size: 22px;
-  line-height: 1.6;
-  max-width: 800px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.75;
+  max-width: 760px;
   margin: 0 auto;
+}
+
+#text-banda h2::before {
+  content: '\201C';
+  font-size: 1.4em;
+  color: var(--cor-primaria);
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: -0.2em;
+  margin-right: 4px;
+}
+
+#text-banda h2::after {
+  content: '\201D';
+  font-size: 1.4em;
+  color: var(--cor-primaria);
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: -0.2em;
+  margin-left: 4px;
 }
 
 .titulo-membros {
@@ -259,6 +334,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: -1;
 }
 
 .banda {
@@ -317,12 +393,15 @@ body {
 
 /*................  Carrossel Twitch ...........................*/
 
-#carrossel-membros{
-  background-color: var(--cor-escuro);
+#carrossel-membros {
+  background-color: #060606;
+  background-image:
+    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(30, 15, 2, 0.95) 0%, #060606 65%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(226, 139, 31, 0.07) 0%, transparent 70%);
   padding: 30px 0 40px;
 }
 
-.carrossel-twitch{
+.carrossel-twitch {
   position: relative;
   overflow: hidden;
   max-width: 1200px;
@@ -330,14 +409,14 @@ body {
   padding: 0 20px;
 }
 
-.carrossel-track{
+.carrossel-track {
   display: flex;
   align-items: center;
   transition: transform 0.5s ease;
   will-change: transform;
 }
 
-.carrossel-slide{
+.carrossel-slide {
   flex: 0 0 60%;
   max-width: 60%;
   padding: 0 10px;
@@ -347,14 +426,14 @@ body {
   pointer-events: none;
 }
 
-.carrossel-slide.ativo{
+.carrossel-slide.ativo {
   transform: scale(1.08);
   opacity: 1;
   z-index: 2;
   pointer-events: auto;
 }
 
-.carrossel-slide video{
+.carrossel-slide video {
   width: 100%;
   border-radius: 12px;
   background: #000;
@@ -363,7 +442,7 @@ body {
   object-fit: cover;
 }
 
-.carrossel-nome{
+.carrossel-nome {
   text-align: center;
   padding: 10px 0 4px;
   color: var(--cor-primaria);
@@ -373,12 +452,12 @@ body {
   transition: opacity 0.3s ease;
 }
 
-.carrossel-slide.ativo .carrossel-nome{
+.carrossel-slide.ativo .carrossel-nome {
   opacity: 1;
 }
 
 /* Botões prev/next */
-.carrossel-btn{
+.carrossel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-60%);
@@ -394,27 +473,27 @@ body {
   line-height: 1;
 }
 
-.carrossel-btn:hover{
+.carrossel-btn:hover {
   background: rgba(226, 139, 31, 0.85);
 }
 
-.carrossel-prev{
+.carrossel-prev {
   left: 30px;
 }
 
-.carrossel-next{
+.carrossel-next {
   right: 30px;
 }
 
 /* Dots */
-.carrossel-dots{
+.carrossel-dots {
   display: flex;
   justify-content: center;
   gap: 10px;
   padding: 16px 0 0;
 }
 
-.carrossel-dot{
+.carrossel-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -425,14 +504,18 @@ body {
   transition: background-color 0.3s;
 }
 
-.carrossel-dot.ativo{
+.carrossel-dot.ativo {
   background: var(--cor-primaria);
 }
 
 /*................  Seção Fotos ...........................*/
 
 #fotos {
-  background-color: var(--cor-escuro);
+  background-color: #0b0b0b;
+  background-image:
+    radial-gradient(ellipse 70% 40% at 15% 50%, rgba(40, 20, 5, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 40% at 85% 50%, rgba(20, 15, 40, 0.45) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(226,139,31,0.04) 0%, transparent 15%, transparent 85%, rgba(226,139,31,0.04) 100%);
   padding: 50px 20px;
 }
 
@@ -490,6 +573,286 @@ body {
   background-color: var(--cor-primaria);
 }
 
+/*................  Depoimentos ...........................*/
+
+#depoimentos {
+  background-color: #09080a;
+  background-image:
+    radial-gradient(ellipse 75% 55% at 50% 50%, rgba(45, 25, 5, 0.85) 0%, #09080a 65%),
+    radial-gradient(ellipse 40% 30% at 50% 0%, rgba(226, 139, 31, 0.07) 0%, transparent 60%);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.titulo-depoimentos {
+  font-size: 28px;
+  color: var(--cor-dourado);
+  padding: 15px 10px;
+  max-width: 400px;
+  margin: 0 auto 40px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .depoimentos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.depoimento-card {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 28px 24px 22px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.depoimento-card:hover {
+  border-color: var(--cor-primaria);
+  background-color: rgba(226, 139, 31, 0.05);
+}
+
+.depoimento-aspas {
+  font-size: 52px;
+  line-height: 1;
+  color: var(--cor-primaria);
+  font-family: Georgia, serif;
+  margin-bottom: -10px;
+}
+
+.depoimento-texto {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.depoimento-autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.depoimento-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cor-primaria);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.depoimento-nome {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 2px;
+}
+
+.depoimento-cargo {
+  font-size: 13px;
+  color: var(--cor-primaria);
+  margin: 0;
+}
+
+/*................  Botão Flutuante WhatsApp ...........................*/
+
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 90px;
+  left: 30px;
+  z-index: 98;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #25d366;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.45);
+  transition: background-color 0.3s, transform 0.2s;
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.1);
+}
+
+/*................  Seção Contato ...........................*/
+
+#contato {
+  background-color: #070707;
+  background-image:
+    radial-gradient(ellipse 65% 55% at 50% 45%, rgba(226, 139, 31, 0.1) 0%, transparent 65%),
+    radial-gradient(ellipse 100% 30% at 50% 100%, rgba(219, 189, 19, 0.06) 0%, transparent 70%),
+    repeating-linear-gradient(-45deg, transparent 0px, transparent 60px, rgba(219,189,19,0.02) 60px, rgba(219,189,19,0.02) 61px);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.titulo-contato {
+  font-size: 28px;
+  color: var(--cor-dourado);
+  padding: 15px 10px;
+  max-width: 400px;
+  margin: 0 auto 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.contato-subtitulo {
+  color: #fff;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 36px;
+}
+
+.contato-subtitulo::before {
+  content: '\201C';
+  font-size: 1.4em;
+  color: var(--cor-primaria);
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: -0.2em;
+  margin-right: 4px;
+}
+
+.contato-subtitulo::after {
+  content: '\201D';
+  font-size: 1.4em;
+  color: var(--cor-primaria);
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: -0.2em;
+  margin-left: 4px;
+}
+
+.contato-eventos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.evento-tag {
+  background-color: rgba(226, 139, 31, 0.12);
+  border: 1px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.contato-info {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.contato-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #25d366;
+  padding: 18px 28px;
+  border-radius: 0 8px 8px 0;
+  color: #25d366;
+}
+
+.contato-label {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0 0 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contato-valor {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contato-valor:hover {
+  color: #25d366;
+}
+
+.btn-orcamento {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.btn-orcamento:hover {
+  background-color: #1ebe5d;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .btn-whatsapp {
+    bottom: 90px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .btn-whatsapp:hover,
+  .btn-orcamento:hover {
+    transform: none;
+  }
+
+  .contato-card {
+    padding: 16px 20px;
+  }
+
+  .contato-valor {
+    font-size: 17px;
+  }
+
+  .btn-orcamento {
+    font-size: 14px;
+    padding: 14px 24px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /*................  Footer ...........................*/
 
 .site-footer {
@@ -504,9 +867,34 @@ body {
   margin-bottom: 10px;
 }
 
-.footer-texto {
-  font-size: 14px;
-  margin-bottom: 15px;
+.footer-assinatura {
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.footer-assinatura-nome {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 10px;
+  background: linear-gradient(90deg, #FEAA00 0%, #FF5F0C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-assinatura-destaque {
+  margin-left: 0.25em;
+  letter-spacing: 0.06em;
+}
+
+.footer-assinatura-tagline {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #555;
+  margin: 0;
 }
 
 .footer-redes {
@@ -531,6 +919,124 @@ body {
   color: #777;
 }
 
+/*................  Lightbox ...........................*/
+
+.foto-item {
+  cursor: pointer;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.93);
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.aberto {
+  display: flex;
+}
+
+.lightbox-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+  animation: lightbox-zoom 0.25s ease-out;
+}
+
+@keyframes lightbox-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-contador {
+  color: #aaa;
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+
+.lightbox-fechar {
+  position: fixed;
+  top: 18px;
+  right: 28px;
+  font-size: 44px;
+  line-height: 1;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.lightbox-fechar:hover {
+  color: var(--cor-primaria);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  border-radius: 50%;
+  line-height: 1;
+  transition: background-color 0.2s;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: var(--cor-primaria-85);
+}
+
+@media (max-width: 480px) {
+  .lightbox-prev {
+    left: 8px;
+  }
+
+  .lightbox-next {
+    right: 8px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    font-size: 20px;
+    padding: 10px 12px;
+  }
+}
+
 /*................  Animações ...........................*/
 
 .fade-in {
@@ -548,7 +1054,7 @@ body {
 
 @media (max-width: 768px) {
   .overlay a {
-    font-size: 20px
+    font-size: 20px;
   }
 
   .overlay .closebtn {
@@ -565,18 +1071,21 @@ body {
     display: none;
   }
 
+  .btn-contratar {
+    display: none;
+  }
+
   .hamburger {
     visibility: visible;
     margin-left: 20vw;
   }
 
-  .show-card {
-    flex-wrap: wrap;
+  .agenda-mes-grid {
+    grid-template-columns: 1fr;
   }
 
-  .show-btn {
-    width: 100%;
-    text-align: center;
+  .show-card:hover {
+    transform: none;
   }
 
   .responsive {
@@ -585,46 +1094,46 @@ body {
   }
 
   #text-banda h2 {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
-@media (max-width: 768px){
-  .carrossel-slide{
+@media (max-width: 768px) {
+  .carrossel-slide {
     flex: 0 0 80%;
     max-width: 80%;
   }
 
-  .carrossel-btn{
+  .carrossel-btn {
     font-size: 22px;
     padding: 10px 13px;
   }
 
-  .carrossel-prev{
+  .carrossel-prev {
     left: 10px;
   }
 
-  .carrossel-next{
+  .carrossel-next {
     right: 10px;
   }
 }
 
-@media (max-width: 480px){
-  .carrossel-slide{
+@media (max-width: 480px) {
+  .carrossel-slide {
     flex: 0 0 90%;
     max-width: 90%;
   }
 
-  .carrossel-btn{
+  .carrossel-btn {
     font-size: 18px;
     padding: 8px 11px;
   }
 
-  .carrossel-prev{
+  .carrossel-prev {
     left: 5px;
   }
 
-  .carrossel-next{
+  .carrossel-next {
     right: 5px;
   }
 }
@@ -649,9 +1158,30 @@ body {
   .overlay {
     transition: none;
   }
+
   .carrossel-track,
   .carrossel-slide,
-  .carrossel-nome{
+  .carrossel-nome {
+    transition: none;
+  }
+
+  .btn-whatsapp,
+  .btn-orcamento {
+    transition: none;
+  }
+
+  .btn-whatsapp:hover,
+  .btn-orcamento:hover {
+    transform: none;
+  }
+
+  .lightbox-img {
+    animation: none;
+  }
+
+  .lightbox-prev,
+  .lightbox-next,
+  .lightbox-fechar {
     transition: none;
   }
 }
