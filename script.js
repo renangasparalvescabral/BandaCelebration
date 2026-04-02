@@ -30,6 +30,8 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     closeNav();
   }
+  // Setas do teclado só controlam o carrossel quando o lightbox está fechado
+  if (document.getElementById("lightbox") && document.getElementById("lightbox").classList.contains("aberto")) return;
   if (e.key === "ArrowLeft") {
     carrosselTwitch.anterior();
   }
@@ -216,4 +218,58 @@ var spyObserver = new IntersectionObserver(function(entries) {
 
 sections.forEach(function(section) {
   spyObserver.observe(section);
+});
+
+// Lightbox de Fotos
+var lightbox = document.getElementById("lightbox");
+var lightboxImg = document.querySelector(".lightbox-img");
+var lightboxContador = document.querySelector(".lightbox-contador");
+var fotoImgs = document.querySelectorAll(".foto-item img");
+var lightboxIndice = 0;
+
+function abrirLightbox(index) {
+  lightboxIndice = index;
+  lightboxImg.src = fotoImgs[index].src;
+  lightboxImg.alt = fotoImgs[index].alt;
+  lightboxContador.textContent = (index + 1) + " / " + fotoImgs.length;
+  lightbox.classList.add("aberto");
+  document.body.style.overflow = "hidden";
+  lightbox.querySelector(".lightbox-fechar").focus();
+}
+
+function fecharLightbox() {
+  lightbox.classList.remove("aberto");
+  document.body.style.overflow = "";
+}
+
+fotoImgs.forEach(function(img, i) {
+  var item = img.closest(".foto-item");
+  item.setAttribute("tabindex", "0");
+  item.setAttribute("role", "button");
+  item.setAttribute("aria-label", "Ampliar: " + (img.alt || "foto " + (i + 1)));
+  item.addEventListener("click", function() { abrirLightbox(i); });
+  item.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrirLightbox(i); }
+  });
+});
+
+lightbox.querySelector(".lightbox-fechar").addEventListener("click", fecharLightbox);
+
+lightbox.querySelector(".lightbox-prev").addEventListener("click", function() {
+  abrirLightbox((lightboxIndice - 1 + fotoImgs.length) % fotoImgs.length);
+});
+
+lightbox.querySelector(".lightbox-next").addEventListener("click", function() {
+  abrirLightbox((lightboxIndice + 1) % fotoImgs.length);
+});
+
+lightbox.addEventListener("click", function(e) {
+  if (e.target === lightbox) fecharLightbox();
+});
+
+document.addEventListener("keydown", function(e) {
+  if (!lightbox.classList.contains("aberto")) return;
+  if (e.key === "Escape") fecharLightbox();
+  if (e.key === "ArrowLeft") abrirLightbox((lightboxIndice - 1 + fotoImgs.length) % fotoImgs.length);
+  if (e.key === "ArrowRight") abrirLightbox((lightboxIndice + 1) % fotoImgs.length);
 });
